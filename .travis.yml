@@ -9,17 +9,17 @@ script:
   - docker run jameszhujian/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t jameszhujian/multi-client ./client
-  - docker build -t jameszhujian/multi-nginx ./nginx
-  - docker build -t jameszhujian/multi-server ./server
-  - docker build -t jameszhujian/multi-worker ./worker
+  - docker build -t jameszj/multi-client ./client
+  - docker build -t jameszj/multi-nginx ./nginx
+  - docker build -t jameszj/multi-server ./server
+  - docker build -t jameszj/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push jameszhujian/multi-client:latest
-  # - docker push jameszhujian/multi-nginx:latest
-  # - docker push jameszhujian/multi-server:latest
-  # - docker push jameszhujian/multi-worker:latest
+  - docker push jameszj/multi-client:latest
+  - docker push jameszj/multi-nginx:latest
+  - docker push jameszj/multi-server:latest
+  - docker push jameszj/multi-worker:latest
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-east-2"
