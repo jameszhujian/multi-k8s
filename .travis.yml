@@ -16,19 +16,20 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push jameszj/multi-client:latest
-  - docker push jameszj/multi-nginx:latest
-  - docker push jameszj/multi-server:latest
-  - docker push jameszj/multi-worker:latest
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-east-2"
-#   app: "multi-docker"
-#   env: "DockerReact-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-313110838466"
-#   bucket_path: "docker-react"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
+  - docker push jameszj/multi-client
+  - docker push jameszj/multi-nginx
+  - docker push jameszj/multi-server
+  - docker push jameszj/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-313110838466"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
