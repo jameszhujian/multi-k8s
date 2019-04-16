@@ -10,7 +10,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <header>
-            {/*<h1 className="App-title">Welcome to React</h1>*/}
+            <h1 className="App-title">Fib Calculator version 2</h1>
             <Link style={{ margin: "10px" }} to="/">
               Home
             </Link>
